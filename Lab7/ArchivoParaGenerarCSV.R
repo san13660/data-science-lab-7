@@ -1,20 +1,29 @@
 # Universidad del Valle de Guatemala
-# Mineria de Datos
+# Data Science - Seccion 10
+# Laboratorio 8 y 9
+# Maria Fernanda Estrada 14198
 # Christopher Sandoval 13660
-# Fernanda Estrada 14198
-# Luis Delgado 17187
+# *
+# *
+# Codigo dado en clase por Lynette Garcia Perez (Febrero 2019)
+# Script que sirve para unir archivos de datos de importacion de vehiculos de la SAT
+# Octubre/2020
 
-# Paquetes necesarios
+
+#Paquetes necesarios
+install.packages("lubridate")
+install.packages("stringr")
 library("tools")
 library("lubridate")
 library("stringr")
 
+
 # Extraer primero los archivos .zip y porner el working directory 
 # de R a leer de la carpeta donde estan los txt para leer y unir todo
-listaArchivos<-list.files("Data/")
+listaArchivos<-list.files("DataImportaciones/")
 dataset <- data.frame()
 for (archivo in listaArchivos){
-  archivo=paste("Data/",archivo,sep="")
+  archivo=paste("DataImportaciones/",archivo,sep="")
   print (archivo)
   if (file_ext(archivo) == "txt"){
     if (!exists("dataset")){

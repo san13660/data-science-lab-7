@@ -1,19 +1,27 @@
-#Lynette García Pérez
-#Febrero 2019
-#Script que sirve para descargar y unir archivos de datos de importación de vehículos de la SAT
+# Universidad del Valle de Guatemala
+# Data Science - Seccion 10
+# Laboratorio 8 y 9
+# Maria Fernanda Estrada 14198
+# Christopher Sandoval 13660
+# *
+# *
+# Codigo dado en clase por Lynette Garcia Perez (Febrero 2019)
+# Script que sirve para descargar archivos de datos de importacion de vehiculos de la SAT
+# Octubre/2020
+
 
 #Paquetes necesarios
-#lubridate
-#stringr
-
+install.packages("lubridate")
+install.packages("stringr")
 library("tools")
 library("lubridate")
 library("stringr")
 
 
 setwd("carpeta donde va a guardar los archivos")
-# Para obtener los links usé la siguiente shiny apps disponible en:https://spannbaueradam.shinyapps.io/r_regex_tester/ con el 
-# código fuente de la página de la SAT y el siguiente patrón: https://portal.sat.gob.gt/portal/descarga/5030/importacion-de-vehiculos/[[:digit:]]{4}/importacion_de_vehiculos_[[:digit:]]{4}_[[:lower:]]+.zip
+
+# Links de los archivos de la SAT
+
 links<-"https://portal.sat.gob.gt/portal/descarga/5030/importacion-de-vehiculos/37823/importacion_de_vehiculos_2019_febrero.zip
 
 https://portal.sat.gob.gt/portal/descarga/5030/importacion-de-vehiculos/37823/importacion_de_vehiculos_2019_febrero.zip
@@ -387,30 +395,28 @@ https://portal.sat.gob.gt/portal/descarga/5030/importacion-de-vehiculos/4817/imp
 https://portal.sat.gob.gt/portal/descarga/5030/importacion-de-vehiculos/4817/importacion_de_vehiculos_2011_enero.zip"
 
 
-
+# Colocar los archivos en una carpeta llamada DatosImportaciones
 
 links<-str_trim(unlist(strsplit(links,"[[:cntrl:]]")))
 links<-links[links!=""]
 
 for (vinculo in links) {
-  if (!file.exists(paste("datos/",basename(vinculo)))){
-    download.file(vinculo,paste("datos/",basename(vinculo)))
+  if (!file.exists(paste("DatosImportaciones/",basename(vinculo)))){
+    download.file(vinculo,paste("DatosImportaciones/",basename(vinculo)))
     Sys.sleep(5)
   }
 }
 
-#Extraer primero los archivos .zip y porner el working directory 
-# de R a leer de la carpeta donde est?n los txt
-# PAra leer y unir todo
+
+# Extraer primero los archivos .zip y porner el working directory de R a leer de la carpeta donde estan los txt
+# Para leer y unir todo
+
+setwd("C:/Users/FERNANDA ESTRADA/Documents/Clases 2020/Data Science 1/Laboratorios/Laboratorio 8/lab/data-science-lab-7/Lab7/DatosImportaciones")
 
 listaArchivos<-list.files(getwd())
 head(listaArchivos,30)
 dataset <-data.frame()
 for (archivo in listaArchivos){
-  print (archivo)
-  # if (file_ext(archivo) == "zip")
-  #   archivo<-unzip(archivo)
-  print (archivo)
   if (file_ext(archivo) == "txt"){
     if (!exists("dataset")){
       dataset<-read.table(archivo,sep = "|", stringsAsFactors = F)
@@ -434,5 +440,8 @@ dataset$DiaSem<-wday(dataset$DatePoliza)
 dataset$DatePoliza<-NULL
 
 dataset[dataset$Modelo.del.Vehiculo == 3015,"Modelo.del.Vehiculo"]<-2015
+dataset <- na.omit(dataset)
+
 write.csv(dataset, file="importacionesVehiculosSAT.csv",row.names = F)
-save(dataset, file="importacionesSAT.RData")
+
+summary(dataset)
