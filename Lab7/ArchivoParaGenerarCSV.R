@@ -3,12 +3,11 @@
 # Laboratorio 8 y 9
 # Maria Fernanda Estrada 14198
 # Christopher Sandoval 13660
-# *
+# Estuardo Diaz 16110
 # *
 # Codigo dado en clase por Lynette Garcia Perez (Febrero 2019)
 # Script que sirve para unir archivos de datos de importacion de vehiculos de la SAT
 # Octubre/2020
-
 
 #Paquetes necesarios
 install.packages("lubridate")
@@ -16,7 +15,6 @@ install.packages("stringr")
 library("tools")
 library("lubridate")
 library("stringr")
-
 
 # Extraer primero los archivos .zip y porner el working directory 
 # de R a leer de la carpeta donde estan los txt para leer y unir todo

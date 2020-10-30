@@ -3,7 +3,7 @@
 # Laboratorio 8 y 9
 # Maria Fernanda Estrada 14198
 # Christopher Sandoval 13660
-# *
+# Estuardo Diaz 16110
 # *
 # Codigo dado en clase por Lynette Garcia Perez (Febrero 2019)
 # Script que sirve para descargar archivos de datos de importacion de vehiculos de la SAT

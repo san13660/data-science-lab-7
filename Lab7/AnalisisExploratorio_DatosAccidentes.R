@@ -3,7 +3,7 @@
 # Laboratorio 8 y 9
 # Maria Fernanda Estrada 14198
 # Christopher Sandoval 13660
-# *
+# Estuardo Diaz 16110
 # *
 # Analisis exploratorio de los archivos de accidentes
 # Octubre/2020
@@ -34,15 +34,15 @@ colnames(accidentes_train) <- c("dia_ocu", "mes_ocu", "dia_sem_ocu", "hora_ocu",
 accidentes_train <- sapply(accidentes_train, as.numeric)
 
 temp_dataset<-read_sav("DatosAccidentes/accidentes_2010.sav")
-temp_dataset<-temp_dataset[,c("dia_ocu", "mes_ocu", "dia_sem_ocu", "hora_ocu", "depto_ocu", "sexo_pil", "edad_pil", "estado_pil", "tipo_v", "color_v", "causa_ac")]
-colnames(temp_dataset) <- c("dia_ocu", "mes_ocu", "dia_sem_ocu", "hora_ocu", "depto_ocu", "sexo_pil", "edad_pil", "estado_pil", "tipo_veh", "color_veh", "causa_acc")
+temp_dataset<-temp_dataset[,c("dia_ocu", "mes_ocu", "dia_sem_ocu", "hora_ocu",  "depto_ocu", "sexo_pil", "edad_pil", "estado_pil", "tipo_v", "color_v", "causa_ac")]
+colnames(temp_dataset) <- c("dia_ocu", "mes_ocu", "dia_sem_ocu", "hora_ocu",  "depto_ocu", "sexo_pil", "edad_pil", "estado_pil", "tipo_veh", "color_veh", "causa_acc")
 temp_dataset <- sapply(temp_dataset, as.numeric)
 
 accidentes_train<-rbind(accidentes_train,temp_dataset)
 
 temp_dataset<-read_sav("DatosAccidentes/accidentes_2011.sav")
 temp_dataset<-temp_dataset[,c("dia_ocu", "mes_ocu", "dia_sem_ocu", "hora_ocu", "depto_ocu", "sexo_pil", "edad_pil", "estado_pil", "tipo_vehiculo", "color_vehi", "causa_acc")]
-colnames(temp_dataset) <- c("dia_ocu", "mes_ocu", "dia_sem_ocu", "hora_ocu", "depto_ocu", "sexo_pil", "edad_pil", "estado_pil", "tipo_veh", "color_veh", "causa_acc")
+colnames(temp_dataset) <- c("dia_ocu", "mes_ocu","dia_sem_ocu", "hora_ocu", "depto_ocu", "sexo_pil", "edad_pil", "estado_pil", "tipo_veh", "color_veh", "causa_acc")
 temp_dataset <- sapply(temp_dataset, as.numeric)
 
 accidentes_train<-rbind(accidentes_train,temp_dataset)
@@ -56,14 +56,14 @@ accidentes_train<-rbind(accidentes_train,temp_dataset)
 
 temp_dataset<-read_sav("DatosAccidentes/accidentes_2013.sav")
 temp_dataset<-temp_dataset[,c("dia_ocu", "mes_ocu", "dia_sem_ocu", "hora_ocu", "depto_ocu", "sexo_pil", "edad_pil", "estado_pil", "tipo_veh", "color_veh", "causa_acc")]
-colnames(temp_dataset) <- c("dia_ocu", "mes_ocu", "dia_sem_ocu", "hora_ocu", "depto_ocu", "sexo_pil", "edad_pil", "estado_pil", "tipo_veh", "color_veh", "causa_acc")
+colnames(temp_dataset) <- c("dia_ocu","mes_ocu", "dia_sem_ocu", "hora_ocu", "depto_ocu", "sexo_pil", "edad_pil", "estado_pil", "tipo_veh", "color_veh", "causa_acc")
 temp_dataset <- sapply(temp_dataset, as.numeric)
 
 accidentes_train<-rbind(accidentes_train,temp_dataset)
 
 temp_dataset<-read_sav("DatosAccidentes/accidentes_2014.sav")
-temp_dataset<-temp_dataset[,c("día_ocu", "mes_ocu", "día_sem_ocu", "hora_ocu", "depto_ocu", "sexo_con", "edad_con", "estado_con", "tipo_veh", "color_veh", "tipo_eve")]
-colnames(temp_dataset) <- c("dia_ocu", "mes_ocu", "dia_sem_ocu", "hora_ocu", "depto_ocu", "sexo_pil", "edad_pil", "estado_pil", "tipo_veh", "color_veh", "causa_acc")
+temp_dataset<-temp_dataset[,c("dï¿½a_ocu", "mes_ocu", "dï¿½a_sem_ocu", "hora_ocu", "depto_ocu", "sexo_con", "edad_con", "estado_con", "tipo_veh", "color_veh", "tipo_eve")]
+colnames(temp_dataset) <- c("dia_ocu", "mes_ocu", "dia_sem_ocu",  "hora_ocu", "depto_ocu", "sexo_pil", "edad_pil", "estado_pil", "tipo_veh", "color_veh", "causa_acc")
 temp_dataset <- sapply(temp_dataset, as.numeric)
 
 accidentes_train<-rbind(accidentes_train,temp_dataset)
