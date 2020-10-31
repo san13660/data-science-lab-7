@@ -18,10 +18,10 @@ library("stringr")
 
 # Extraer primero los archivos .zip y porner el working directory 
 # de R a leer de la carpeta donde estan los txt para leer y unir todo
-listaArchivos<-list.files("DataImportaciones/")
+listaArchivos<-list.files("DatosImportaciones/")
 dataset <- data.frame()
 for (archivo in listaArchivos){
-  archivo=paste("DataImportaciones/",archivo,sep="")
+  archivo=paste(getwd(),"/DatosImportaciones/",archivo,sep="")
   print (archivo)
   if (file_ext(archivo) == "txt"){
     if (!exists("dataset")){
@@ -53,3 +53,4 @@ write.csv(dataset, file="importacionesVehiculosSAT.csv",row.names = FALSE)
 
 view(dataset)
 summary(dataset)
+
